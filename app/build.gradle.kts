@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+//    alias(libs.plugins.kotlin.hilt)
+//    alias(libs.plugins.kotlin.hilt.android.compiler)
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -11,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.onespan.android.interview"
-        minSdk = 35
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -64,4 +68,11 @@ dependencies {
     implementation(platform(libs.square.retrofit.bom))
     implementation(libs.square.retrofit)
     implementation(libs.square.retrofit.converter.kotlinx.serialization)
+
+    //Dagger - Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
 }
