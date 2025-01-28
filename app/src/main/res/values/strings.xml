@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android Intermediate Interview</string>
+    <string name="splash_screen_description">Explore Cats Breeds</string>
 </resources>

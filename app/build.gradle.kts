@@ -3,8 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
-//    alias(libs.plugins.kotlin.hilt)
-//    alias(libs.plugins.kotlin.hilt.android.compiler)
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
