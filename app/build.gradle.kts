@@ -73,4 +73,7 @@ dependencies {
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
+    // JSON Converter
+    implementation(libs.converter.gson)
+
 }

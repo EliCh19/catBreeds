@@ -1,11 +1,13 @@
 package com.onespan.android.interview.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.onespan.android.interview.presentation.screens.SplashScreen
 import com.onespan.android.interview.presentation.screens.home.HomeScreen
+import com.onespan.android.interview.presentation.screens.home.HomeScreenViewModel
 
 @Composable
 fun CatsNavigation() {
@@ -15,7 +17,8 @@ fun CatsNavigation() {
             SplashScreen(navController = navController)
         }
         composable(CatsScreens.HomeScreen.name) {
-           HomeScreen()
+            val viewModel = hiltViewModel<HomeScreenViewModel>()
+            HomeScreen(viewModel = viewModel)
         }
     }
 }
