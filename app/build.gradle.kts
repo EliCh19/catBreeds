@@ -76,4 +76,8 @@ dependencies {
     // JSON Converter
     implementation(libs.converter.gson)
 
+    // MockK library
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+
 }

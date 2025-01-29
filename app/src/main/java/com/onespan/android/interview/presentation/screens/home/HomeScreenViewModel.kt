@@ -25,7 +25,7 @@ class HomeScreenViewModel @Inject constructor(private val repository: CatsReposi
         getItems()
     }
 
-    private fun getItems() {
+    fun getItems() {
         viewModelScope.launch(Dispatchers.Main) {
             try {
                 when (val response = repository.getBreeds()) {
@@ -37,10 +37,12 @@ class HomeScreenViewModel @Inject constructor(private val repository: CatsReposi
                             Log.i("Network", "showCats: Failed to load cat breeds")
                         }
                     }
+
                     is Resource.Error -> {
                         isLoading = false
                         Log.i("Network", "showCats: Failed to load cat breeds")
                     }
+
                     else -> {
                         isLoading = false
                     }
