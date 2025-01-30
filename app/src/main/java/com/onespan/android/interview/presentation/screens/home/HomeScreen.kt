@@ -45,7 +45,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(viewModel: HomeScreenViewModel) {
+fun HomeScreen(viewModel: HomeScreenViewModel, onItemClicked: (String) -> Unit) {
     Scaffold(
         topBar = {
             CatsTopAppBar(
@@ -91,7 +91,7 @@ fun HomeScreen(viewModel: HomeScreenViewModel) {
                 modifier = Modifier.fillMaxSize()
             ) { page ->
                 when (page) {
-                    0 -> CatPage(viewModel)
+                    0 -> CatPage(viewModel, onItemClicked)
                     1 -> SecondPage()
                 }
             }
@@ -100,7 +100,7 @@ fun HomeScreen(viewModel: HomeScreenViewModel) {
 }
 
 @Composable
-fun CatPage(viewModel: HomeScreenViewModel) {
+fun CatPage(viewModel: HomeScreenViewModel, onItemClicked: (String) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -116,7 +116,7 @@ fun CatPage(viewModel: HomeScreenViewModel) {
                 contentPadding = PaddingValues(vertical = 8.dp)
             ) {
                 items(items = listOfCats) { cat ->
-                    CatRow(cat)
+                    CatRow(cat, onItemClicked)
                 }
             }
         }
@@ -140,12 +140,14 @@ fun SecondPage() {
 }
 
 @Composable
-fun CatRow(cat: Data) {
+fun CatRow(cat: Data, onItemClicked: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
-            .clickable { },
+            .clickable {
+                onItemClicked(cat.breed)
+            },
         colors = CardDefaults.cardColors(containerColor = Color(0xFFEDE7F6)),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
